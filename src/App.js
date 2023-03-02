@@ -1,10 +1,14 @@
 import './App.css';
 import MainScreen from './Components/MainScreen';
+ import { QueryClient,QueryClientProvider,} from 'react-query'
 
+  const queryClient = new QueryClient()
 function App() {
+  
   return (
     <div className="App">
-    <MainScreen />
+      <QueryClientProvider  client={queryClient}>
+    <MainScreen /></QueryClientProvider>
     </div>
   );
 }
