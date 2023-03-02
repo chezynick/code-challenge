@@ -1,5 +1,5 @@
 import React from 'react'
-import { DATENEWOLD, DATEOLDNEW, NAMEAZ, NAMEZA } from '../../Constants';
+import { ABSENCEAZ, ABSENCEZA, DATENEWOLD, DATEOLDNEW, NAMEAZ, NAMEZA } from '../../Constants';
 import Absence from '../Absence';
 import SortValueContainer from '../SortValueContainer';
 
@@ -12,7 +12,7 @@ const AbsenceContainer = ({ absencesToDisplay, setSelectedEmployee, setSortValue
             <thead>
             <tr>
                         <th>Start date{' '}<SortValueContainer topValue={DATENEWOLD} bottomValue={DATEOLDNEW} setSortValue={setSortValue} currentSortValue={sortValue} /></th>
-                <th>Absence type </th>
+                <th>Absence type{' '}<SortValueContainer topValue={ABSENCEAZ} bottomValue={ABSENCEZA} setSortValue={setSortValue} currentSortValue={sortValue} /> </th>
                 <th>name {' '}<SortValueContainer topValue={NAMEAZ} bottomValue={NAMEZA} setSortValue={setSortValue} currentSortValue={sortValue} /></th>
                         <th>authorised</th>
                         <th>Has conflict</th>
