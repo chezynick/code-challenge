@@ -6,6 +6,7 @@ import ErrorScreen from '../ErrorScreen';
 import Header from '../Header';
 import LoadingScreen from '../LoadingScreen';
 import { isAfter, isBefore } from 'date-fns';
+import { useQuery } from 'react-query';
 
 const searchedForValue = (arr, value) => {
     if (value) {
@@ -41,32 +42,20 @@ const MainScreen = () => {
     const [selectedEmployee, setSelectedEmployee] = useState();
     const [searchValue, setSearchValue] = useState('');
     const [sortValue, setSortValue] = useState(DATENEWOLD);
-    const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState(false);
-  
-     useEffect(() => {
-         getAllAbsences().then((res) => {
-             console.log(res.data)
-             const sortedArray = sortAbsences(res.data, sortValue)
+    const { isLoading, isError } = useQuery('initial absence data', () => getAllAbsences(), {
+        onSuccess: (res) => {
+               const sortedArray = sortAbsences(res.data, sortValue)
             setAbsences(sortedArray);
             setAbsencesToDisplay(sortedArray);
-            setIsLoading(false);
-        }).catch(() => {
-            setIsError(true)
-             setIsLoading(false)
-        })
-     // eslint-disable-next-line react-hooks/exhaustive-deps
-     }, [])
+        }
+    } )
+    
     useEffect(() => {
         if (selectedEmployee) {
             return setAbsencesToDisplay(absences.filter(abs => abs.employee.id === selectedEmployee))
         }
         return setAbsencesToDisplay(absences)
     }, [absences, selectedEmployee])
-    useEffect(() => {
-        setAbsencesToDisplay(_absencesToDisplay => sortAbsences(absencesToDisplay, sortValue))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [sortValue])
    
     if (isLoading) {
         return (
