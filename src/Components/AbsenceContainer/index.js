@@ -7,7 +7,7 @@ import SortValueContainer from '../SortValueContainer';
 const AbsenceContainer = ({ absencesToDisplay, setSelectedEmployee, setSortValue, sortValue }) => {
 
     return ( 
-        <div className="mt-6 border  border-slate-500 w-full p-4">
+        <div className="mt-6 border rounded-lg  border-slate-500 w-full p-4">
         <table className='table-auto w-full'>
             <thead>
             <tr>

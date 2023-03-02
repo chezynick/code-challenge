@@ -2,7 +2,7 @@ import React from 'react';
 import { DATENEWOLD } from '../../Constants';
 const Header = ({ setSelectedEmployee,setSortValue, setAbsencesToDisplay, absences, setSearchValue, searchValue  }) => {
     return ( 
-        <div className="w-full h-32 flex justify-between items-center bg-slate-50">
+        <div className="w-full h-32 flex justify-evenly items-center ">
             <button className='bg-white border border-red-600 rounded-lg px-2 py-1 flex justify-center items-center' onClick={() => {
                 setSelectedEmployee();
                 setAbsencesToDisplay(absences);
